@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$url = 'http://'.$_SERVER['HTTP_HOST'].'/sumit_poorv_loc/';
+$url = 'http://'.$_SERVER['HTTP_HOST'].'/retail_server/';
 $config['base_url'] = $url;
 
 /*
