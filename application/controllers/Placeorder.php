@@ -113,6 +113,7 @@ class Placeorder extends CI_Controller{
 
 			$this->storemodel->updateDelvStats();
 		}
+		
 		redirect('placeorder/list_orders');
 	}
 }
