@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql:host=futurewebs.in;dbname=futurnjy_suretail',
-	'username' => 'futurnjy_suretai',
-	'password' => 'suretail@123',
-	'database' => 'futurnjy_suretail',
+	'hostname' => '',
+	'username' => '',
+	'password' => '',
+	'database' => '',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
