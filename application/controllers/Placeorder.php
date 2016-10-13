@@ -5,6 +5,8 @@ class Placeorder extends CI_Controller{
 	function __construct(){
 
 		parent::__construct();
+		$this->load->model('storemodel');
+		$this->auth->checkUserAuthGodown();
 	}
 
 	function placeorder(){
@@ -81,5 +83,36 @@ class Placeorder extends CI_Controller{
 		$this->rpsmodel->placeRPSOrder();
 
 		$this->rpsmodel->removeSessionData('RPSOrderitems');
+	}
+
+	function list_orders(){
+
+		$data['content'] = 'placeorder/list_orders';
+		$data['orders'] = $this->storemodel->getDistinctStoreOrders();
+
+		$this->load->view('template',$data);
+	}
+
+	function viewOrder(){
+
+		if($this->input->post('viewdetails')){
+
+			$data = $this->storemodel->getPLacedOrderDetails($this->input->post('orderID'));
+			$content['list'] = $data;
+			$content['content'] = 'placeorder/view_details';
+			$this->load->view('template',$content);
+		}else{
+			
+			redirect('placeorder/list_orders');
+		}
+	}
+
+	function updateDelvStatus(){
+
+		if($this->input->post('develv')){
+
+			$this->storemodel->updateDelvStats();
+		}
+		redirect('placeorder/list_orders');
 	}
 }

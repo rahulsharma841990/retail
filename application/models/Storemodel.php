@@ -324,5 +324,30 @@ class StoreModel extends CI_Model{
 	    fpassthru($f);
 	}
 
+	function getDistinctStoreOrders(){
+
+		$Query = $this->db->select('rps_orders.id as orderid, rps_orders.*, stores_list.*')->group_by('rps_orders.order_date')->join('stores_list','rps_orders.store_id = stores_list.id','LEFT')->get('rps_orders');
+
+		return $Query->result();
+	}
+
+	function getPLacedOrderDetails($id){
+
+		$Query = $this->db->get_where('rps_orders',array('id'=>$id));
+		$result = $Query->row();
+		$storeID = $result->store_id;
+		$orderDate = $result->order_date;
+		$QueryGetOrder = $this->db->get_where('rps_orders', array('order_date'=>$orderDate,'store_id'=>$storeID));
+		return $QueryGetOrder->result();
+	}
+
+	function updateDelvStats(){
+
+		$store_id = $this->input->post('store_id');
+		$orderDate = $this->input->post('order_date');
+		$Query = $this->db->where(array('store_id'=>$store_id, 'order_date'=>$orderDate))->update('rps_orders',array('delv_status'=>1));
+		return true;
+	}
+
 	
 }

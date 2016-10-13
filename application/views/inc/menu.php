@@ -167,7 +167,20 @@
                 <li>
                     Orders
                     <ul>
-                        <li><a href="<?=base_url()?>index.php/placeorder/placeorder">Place Order</a></li>
+                        <?php
+                            if($this->session->userdata('usertype') != 'gd'):
+                        ?>
+                        <li><a href="<?=base_url()?>index.php/placeorder/placeorder" class="submitPop">Place Order</a></li>
+                        <?php
+                            endif;
+                        ?>
+                        <?php
+                            if($this->session->userdata('usertype') == 'gd'):
+                        ?>
+                        <li><a href="<?=base_url()?>index.php/placeorder/list_orders" class="submitPop">Orders List</a></li>
+                        <?php
+                            endif;
+                        ?>
                     </ul>
                 </li>
                 <?php
