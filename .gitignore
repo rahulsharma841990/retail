@@ -2,8 +2,8 @@
 
 application/cache/*
 .phpintel
-application/config/config.php
-application/config/database.php
+application/config/*
+application/config/*
 application/helpers/murl_helper.php
 !application/cache/index.html
 !application/cache/.htaccess
