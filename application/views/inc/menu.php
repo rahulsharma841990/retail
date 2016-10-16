@@ -171,6 +171,7 @@
                             if($this->session->userdata('usertype') != 'gd'):
                         ?>
                         <li><a href="<?=base_url()?>index.php/placeorder/placeorder" class="submitPop">Place Order</a></li>
+                        <li><a href="<?=base_url()?>index.php/placeorder/deposit" class="submitPop">Submit Deposits</a></li>
                         <?php
                             endif;
                         ?>

@@ -6,7 +6,7 @@ class Placeorder extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model('storemodel');
-		$this->auth->checkUserAuthGodown();
+		
 	}
 
 	function placeorder(){
@@ -86,7 +86,7 @@ class Placeorder extends CI_Controller{
 	}
 
 	function list_orders(){
-
+		$this->auth->checkUserAuthGodown();
 		$data['content'] = 'placeorder/list_orders';
 		$data['orders'] = $this->storemodel->getDistinctStoreOrders();
 
@@ -94,7 +94,7 @@ class Placeorder extends CI_Controller{
 	}
 
 	function viewOrder(){
-
+		$this->auth->checkUserAuthGodown();
 		if($this->input->post('viewdetails')){
 
 			$data = $this->storemodel->getPLacedOrderDetails($this->input->post('orderID'));
@@ -108,12 +108,43 @@ class Placeorder extends CI_Controller{
 	}
 
 	function updateDelvStatus(){
-
+		$this->auth->checkUserAuthGodown();
 		if($this->input->post('develv')){
 
 			$this->storemodel->updateDelvStats();
 		}
 		
 		redirect('placeorder/list_orders');
+	}
+
+	function deposit(){
+
+		$userid = $this->session->userdata('userid');
+		$crud = new grocery_CRUD();
+		$crud->set_theme('flexigrid');
+		$crud->set_table('rps_deposit');
+		$crud->set_subject('Deposits');
+		$crud->where('store_id',$userid);
+	
+		$crud->set_field_upload('image_slip','assets/deposits');
+		$crud->columns('deposit_amount','details','image_slip','deposit_date','payment_status');
+		$crud->fields('deposit_amount','details','image_slip','deposit_date','store_id');
+		$crud->required_fields('deposit_amount','details','image_slip','deposit_date','store_id');
+		$crud->callback_add_field('store_id',array($this,'store_id_field_add_callback'));
+
+		$crud->unset_edit();
+		$crud->unset_delete();
+		$output = $crud->render();
+
+		$data['content'] = 'placeorder/deposit';
+		$data['output'] = $output;
+
+		$this->load->view('template', $data);
+	}
+
+	function store_id_field_add_callback(){
+
+	  $userid = $this->session->userdata('userid');
+	  return '<input type="text" maxlength="50" value="'.$userid.'" name="store_id" readonly>';
 	}
 }
