@@ -9,7 +9,6 @@ class Placeorder extends CI_Controller{
 		
 	}
 
-
 	function placeorder(){
 
 		$userid = $this->session->userdata('userid');
