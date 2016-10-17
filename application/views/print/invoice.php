@@ -28,8 +28,8 @@
         <td colspan="2"><table width="800" border="0" cellpadding="0" cellspacing="0">
           <tbody>
             <tr>
-              <td width="175" rowspan="2"><img src="<?=base_url()?>assets/images/rps_logo.jpg" style="width:100%;" /></td>
-              <td width="357">&nbsp;</td>
+              <td width="227" rowspan="2"><img src="<?=base_url()?>assets/images/rps_logo.jpg" style="width:100%; height:100px;" /></td>
+              <td width="305">&nbsp;</td>
               <td width="268">&nbsp;</td>
             </tr>
             <tr>
@@ -110,11 +110,12 @@
         <td height="113" colspan="2"><table width="800" border="0" align="center" cellpadding="0" cellspacing="0" class="itemsTable">
           <tbody>
             <tr style="background-color:#1E1818; color:#FFFFFF;">
-              <td width="391" height="32" align="left"><strong>&nbsp;Product Name</strong></td>
-              <td width="95" align="center"><strong>Qty</strong></td>
-              <td width="115" align="center"><strong>Sale Price</strong></td>
-              <td width="106" align="center"><strong>MRP</strong></td>
-              <td width="93" align="center"><strong>Amount</strong></td>
+              <td width="148" align="center"><strong>Bar Code</strong></td>
+              <td width="346" height="32" align="left"><strong>&nbsp;Product Name</strong></td>
+              <td width="67" align="center"><strong>Qty</strong></td>
+              <td width="82" align="center"><strong>Sale Price</strong></td>
+              <td width="78" align="center"><strong>MRP</strong></td>
+              <td width="79" align="center"><strong>Amount</strong></td>
               </tr>
           
 <?php
@@ -126,6 +127,7 @@
 ?>
               
             <tr>
+              <td align="center" style="font-size:14px;"><?=$value['barcode']?></td>
               <td height="37" style="font-size:14px;">
               	&nbsp;<?=$value['prodName']?>
                 <?php
@@ -151,6 +153,7 @@
 ?>
             
             <tr style="background-color:#1E1818; color:#FFFFFF;">
+              <td align="center">&nbsp;</td>
               <td height="28" align="center"><strong style="font-size:13px;">Total</strong></td>
               <td align="center"><strong style="font-size:13px;"><?=$totalQty?></strong></td>
               <td align="center"><strong style="font-size:13px;"><?=$totalSalePrice ?>/-</strong></td>
