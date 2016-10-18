@@ -21,8 +21,8 @@ class Storestock extends CI_Controller{
 			$crud->field_type('item_bar_code','readonly');
 			$crud->field_type('item_name','readonly');
 			$crud->field_type('item_sale_price','readonly');
-			$crud->unset_add();
-			$crud->unset_edit();
+			//$crud->unset_add();
+			//$crud->unset_edit();
 			$crud->unset_delete();
 			$output = $crud->render();
 		$data = array(
