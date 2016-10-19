@@ -17,10 +17,11 @@ class Storestock extends CI_Controller{
 			$crud->set_table('store_'.$userid.'_stock');
 			$crud->set_subject('Store Stock');
 			$crud->columns('item_bar_code','item_name','item_qty','item_mrp','item_sale_price','expiry_date');
-			$crud->fields('item_bar_code','item_name','item_qty','item_mrp','item_sale_price','expiry_date');
-			$crud->field_type('item_bar_code','readonly');
-			$crud->field_type('item_name','readonly');
-			$crud->field_type('item_sale_price','readonly');
+			$crud->set_relation('item_category','product_category','category_name');
+			//$crud->fields('item_bar_code','item_name','item_qty','item_mrp','item_sale_price','expiry_date');
+			//$crud->field_type('item_bar_code','readonly');
+			//$crud->field_type('item_name','readonly');
+			//$crud->field_type('item_sale_price','readonly');
 			//$crud->unset_add();
 			//$crud->unset_edit();
 			$crud->unset_delete();
