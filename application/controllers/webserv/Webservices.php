@@ -1,6 +1,6 @@
 <?php
 
-class Webservices extends Retail_Controller {
+class Webservices extends RETAIL_Controller {
 
 	function __construct(){
 

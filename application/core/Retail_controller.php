@@ -5,12 +5,8 @@ class Retail_Controller extends CI_Controller{
 	function __construct(){
 
 		parent::__construct();
-		$this->output->set_header("Access-Control-Allow-Origin: *");
-		$this->output->set_header("Access-Control-Expose-Headers: Access-Control-Allow-Origin");
-		$this->output->set_header("Access-Control-Allow-Credentials : true");
+		header("Access-Control-Allow-Origin: *");
 		
-		//$this->output->set_status_header(200);
-		$this->output->_display();
 		if($this->input->server('REQUEST_METHOD')!='POST'){
 
 			$data['code'] = 405;
