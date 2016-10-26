@@ -29,7 +29,7 @@ class Webserv extends CI_Model{
 
 	function searchProdByBarcode($barcode){
 
-		$Query = $this->db->select('*')->from('store_35_stock')->join('retail_purchase','store_35_stock.item_bar_code = retail_purchase.item_bar_code','inner')->group_by('retail_purchase.item_bar_code')->like('retail_purchase.item_bar_code', $barcode,'both')->or_like('retail_purchase.item_name',$barcode,'both')->get();
+		$Query = $this->db->select('*')->from('retail_purchase')->like('item_bar_code', $barcode,'both')->or_like('item_name',$barcode,'both')->get();
 		echo $this->db->last_query();
 		exit;
 		return $Query->result();
