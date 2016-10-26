@@ -133,6 +133,12 @@
                                 <li><a href="<?=base_url()?>index.php/members/MembersList" class="submitPop">Members List</a></li>
                             </ul>
                         </li>
+                        <li>
+                            Store Sales
+                            <ul>
+                                <li><a href="<?=base_url()?>index.php/members/MembersList/add" class="submitPop">View Store Sale</a></li>
+                            </ul>
+                        </li>
                         <?php
                             endif;
                         ?>
