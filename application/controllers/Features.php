@@ -18,6 +18,7 @@ class Features extends CI_Controller{
 		$this->load->view('features/update_det',$data);
 	}
 
+
 	function details(){
 
 		$barCode = $this->input->post('barcode');

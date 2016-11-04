@@ -203,22 +203,22 @@
 	function insertPurchaseUploadByFile(){
 
 		$config['upload_path']          = './assets/uploadPurchase/';
-            $config['allowed_types']        = 'csv';
+        $config['allowed_types']        = 'csv';
 
-            $this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-            $this->upload->do_upload('csvfile');
+        $this->upload->do_upload('csvfile');
 
-            $data = $this->upload->data();
+        $data = $this->upload->data();
 
-            $result = $this->csvreader->parse_file('./assets/uploadPurchase/'.$data['file_name']);
-            //echo "<pre/>";
-            //print_r($result);
+        $result = $this->csvreader->parse_file('./assets/uploadPurchase/'.$data['file_name']);
+        //echo "<pre/>";
+        //print_r($result);
 
-            foreach($result as $key => $value){
+        foreach($result as $key => $value){
 
-            	$this->insertUploadedPurchase($value);
-            }
+        	$this->insertUploadedPurchase($value);
+        }
 	}
 
 
@@ -278,5 +278,18 @@
 		$Query = $this->db->get_where('retail_purchase',array('item_bar_code'=> $this->input->post('barcode')));
 
 		return $Query->result();
+	}
+
+	function uploadPercentageData($data){
+
+		$insertData['bar_code'] = $data['item_code'];
+		$insertData['item_name'] = $data['item_name'];
+		$insertData['sale_price'] = $data['sale_rate'];
+		$insertData['purchase_price'] = $data['purchase_rate'];
+		$insertData['store_percent'] = $data['store_per'];
+		$insertData['admin_percent'] = $data['sukhjeet_per'];
+		$insertData['last_update'] = date('Y-m-d H:i:s');
+
+		$this->db->insert('product_percent', $insertData);
 	}
  }

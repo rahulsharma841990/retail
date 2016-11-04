@@ -197,6 +197,15 @@
                     Reports
                     <ul>
                         <li><a href="">Sale Report</a></li>
+                        <li class="separator"></li>
+                        <li><a href="<?=base_url()?>index.php/storepercent/precent">Sale Percentage</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Payout
+                    <ul>
+                        <li><a href="<?=base_url()?>index.php/payout/genpayout">Generate Payout</a></li>
+                        <li><a href="">Payout List</a></li>
                     </ul>
                 </li>
                 <?php

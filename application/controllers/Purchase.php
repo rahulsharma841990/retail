@@ -134,4 +134,32 @@ class Purchase extends Ci_Controller{
 		$result = $this->purchasemodel->getItemDetails();
 		json($result);
 	}
+
+	//Upload Percentage in Percent table
+	
+	function uploadPercent(){
+
+		if($this->input->post('uploadcsv')){
+
+			$config['upload_path']          = './assets/uploadPernc/';
+	        $config['allowed_types']        = 'csv';
+
+	        $this->load->library('upload', $config);
+
+	        $this->upload->do_upload('csvfile');
+
+	        $data = $this->upload->data();
+
+	        $result = $this->csvreader->parse_file('./assets/uploadPernc/'.$data['file_name']);
+	        //echo "<pre/>";
+	        //print_r($result);
+
+	        foreach($result as $key => $value){
+
+	        	$this->purchasemodel->uploadPercentageData($value);
+	        }
+
+		}
+		$this->load->view('purchase/upload_percent');
+	}
 }
