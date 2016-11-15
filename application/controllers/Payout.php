@@ -12,6 +12,7 @@ class Payout extends CI_Controller{
 
 	function genpayout(){
 
+		$data['stores'] = $this->payoutmodel->getStoresList();
 		$data['content'] = 'payout/genpayout';
 		$this->load->view('template',$data);
 	}
@@ -20,6 +21,14 @@ class Payout extends CI_Controller{
 
 		$fromDate = $this->input->post('fromdate',true);
 		$toDate = $this->input->post('todate',true);
-		$this->payoutmodel->generateAllPayout($fromDate, $toDate);
+		$storeID = $this->input->post('store',true);
+		$this->payoutmodel->generateAllPayout($fromDate, $toDate, $storeID);
+	}
+
+	function payoutList(){
+
+		$data['content'] = 'payout/payout_list';
+
+		$this->load->view('template',$data);
 	}
 }

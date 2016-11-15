@@ -84,9 +84,34 @@ body,td,th {
           <table width="570" border="0" cellspacing="0" cellpadding="0">
             <tbody>
               <tr>
-                <td width="92">&nbsp;</td>
-                <td width="70">&nbsp;</td>
-                <td width="168">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td><strong style="font-size:12px;">Select Store:</strong></td>
+                <td>
+                	<select style="width:89.5%; height:25px;" name="store">
+                    	<option>Select Store</option>
+                      <?php
+                        foreach($stores as $key => $value):
+                      ?>
+                        <option value="<?=$value->id?>"><?=$value->store_name?></option>
+                      <?php
+                        endforeach;
+                      ?>
+                	</select>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="83">&nbsp;</td>
+                <td width="83">&nbsp;</td>
+                <td width="164">&nbsp;</td>
                 <td width="53">&nbsp;</td>
                 <td width="187">&nbsp;</td>
               </tr>
