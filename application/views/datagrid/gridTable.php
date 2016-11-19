@@ -1,11 +1,11 @@
-<link href="css/table.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/table.css" rel="stylesheet" type="text/css" /> -->
 <?php
 	$SessionData = $this->session->userdata($sessionName);
 
 	if(!empty($SessionData)):
 ?>
 <div class="tbDatagrid_<?=$sessionName?>">
-<table class="table-fill">
+<table class="table-fill" cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
 		<?php
@@ -104,3 +104,83 @@
 	endif;
 ?>
 </div>
+<style type="text/css">
+	
+
+	.table-fill th{
+
+		
+		font-size: 12px;
+		font-family: arial;
+	
+		 
+	}
+
+	.table-fill td{
+		border-bottom: 1px solid #000;
+		border-right: 1px solid #000;
+		/*text-align: center;*/
+		font-family: arial;
+		font-size: 12px;
+		text-align: center;
+		width: 100px;
+	}
+
+
+	.table-fill {
+	  border-collapse: separate;
+	  border-spacing: 0;
+	  color: #4a4a4d;
+	  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	.table-fill th,
+	td {
+	  padding: 0 0 0 5px;
+	  vertical-align: middle;
+	}
+	.table-fill thead {
+	  background: #395870;
+	  color: #fff;
+
+	}
+	
+	.table-fill th {
+	  font-weight: bold;
+	  text-align: center;
+
+	}
+	.table-fill th:first-child {
+	  text-align: left;
+	}
+	.table-fill tbody tr:nth-child(even) {
+	  background: #f0f0f2;
+	}
+	.table-fill tbody tr:nth-child(odd) {
+	  background: #FFF;
+	}
+	.table-fill td {
+	  border-bottom: 1px solid #cecfd5;
+	  border-right: 1px solid #cecfd5;
+	}
+	.table-fill td:first-child {
+	  border-left: 1px solid #cecfd5;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		/*$('.table-fill th').each(function(index){
+
+			$(this).html(start_and_end($(this).html()));
+		});
+
+		function start_and_end(str) {
+		  if (str.length > 3) {
+		    return str.substr(0, 10) + '...';
+		  }
+		  return str;
+		}*/
+	});
+</script>
+

@@ -105,6 +105,7 @@ class StoreModel extends CI_Model{
 
 		if($Query->num_rows() >= 1){
 
+			$this->saveTransferInExcel($rawData_Session);
 			$this->saveOldEntries($Query->result(), $table);
 			$this->updateCurrentProductDetails($rawData_Session, $table);
 			$this->lessQtyFromPurchaseTable($rawData_Session);
@@ -113,6 +114,7 @@ class StoreModel extends CI_Model{
 
 		}else{
 
+			$this->saveTransferInExcel($rawData_Session);
 			$this->addNewProductEntry($rawData_Session, $table);
 			$this->lessQtyFromPurchaseTable($rawData_Session);
 
@@ -124,6 +126,8 @@ class StoreModel extends CI_Model{
 
 		$this->session->set_userdata(array('StoreTransferItem'=>''));
 	}
+
+
 
 	public function getLastInvoiceNumAndUpdate($rawData){
 		$Query = $this->db->get('invoice_num');
@@ -180,6 +184,47 @@ class StoreModel extends CI_Model{
 	 		$line[] = $value->last_updated;
 	 		$line[] = date('Y-m-d');
 	 	}
+
+	 	fputcsv($handle, $line, ',');
+		 
+
+
+		fclose($handle); // Close the file
+	}
+
+	private function saveTransferInExcel($rawData_Session){
+
+		$filepath = APPPATH . 'logs/StoreEntriesLog/StoreTransfer-'.$tableName.'-'. date('Y-m-d') . '.csv';
+		 if(!file_exists($filepath)){
+
+		 	$handle = fopen($filepath, "a+"); // Open the file
+
+		 	$line = array('Transfer To','Item Code','Item Category','Item Name','Item Qty','Item Desc','Sale Price','MRP','Item Unit','Free Item Barcode','Free Item Name','Free Item Qty','Item Expiry','Item SKU', 'Date');
+		 	fputcsv($handle, $line, ',');
+		 }else{
+
+		 	$handle = fopen($filepath, "a+"); // Open the file
+		 }
+
+
+		$line = array();
+	 	
+			$line[] = $rawData_Session['transferStore'];
+			$line[] = $rawData_Session['barcode'];
+			$line[] = $rawData_Session['category'];
+			$line[] = $rawData_Session['prodName'];
+			$line[] = $rawData_Session['qty'];
+			$line[] = $rawData_Session['item_desc'];
+			$line[] = $rawData_Session['sale_price'];
+			$line[] = $rawData_Session['mrp'];
+			$line[] = $rawData_Session['item_unit'];
+			$line[] = $rawData_Session['free_item_barcode'];
+			$line[] = $rawData_Session['free_item_name'];
+			$line[] = $rawData_Session['free_item_qty'];
+			$line[] = $rawData_Session['item_expiry'];
+			$line[] = $rawData_Session['item_sku'];
+			$line[] = date('Y-m-d');
+	 	
 
 	 	fputcsv($handle, $line, ',');
 		 

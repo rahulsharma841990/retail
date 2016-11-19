@@ -314,6 +314,7 @@ $(document).ready(function(){
 		$('#totalItm').html(totalItems.total);
 
 		$('.transferGrid').html(gridTable);
+		$(".transferGrid").animate({ scrollTop: $(document).height() }, 1000);
 
 		var totalData = ajaxCall('stores/getSalePriceAndMrp',{},'json');
 		$('#totalSale').html(totalData[0]+'/-');
@@ -335,6 +336,9 @@ $(document).ready(function(){
 
 	$(document).on('dblclick','.tbDatagrid_StoreTransferItem tr', function(){
 		var row = $(this);
+		$(this).children('td').addClass('color-danger');
+		//console.log($(this).html());
+		// return false;
 		if(confirm('Are you sure to delete that row?')){
 
 			
