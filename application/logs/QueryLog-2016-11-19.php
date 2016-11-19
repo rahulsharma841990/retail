@@ -124,3 +124,43 @@ UPDATE `retail_purchase` SET item_qty = item_qty-0
 WHERE `item_bar_code` = 'Channa Daal' 
  Execution Time:0.0032320022583008
 
+SELECT *
+FROM `godown_login`
+WHERE `store_username` = 'storeone'
+AND `store_password` = 'e10adc3949ba59abbe56e057f20f883e' 
+ Execution Time:0.00049400329589844
+
+SHOW TABLES FROM `retail_local` 
+ Execution Time:0.00075411796569824
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.0027868747711182
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.003864049911499
+
+SELECT `retail_purchase`.*
+FROM `retail_purchase`
+ LIMIT 10 
+ Execution Time:0.00078392028808594
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.0039119720458984
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.0027070045471191
+
+SELECT *
+FROM `retail_purchase` 
+ Execution Time:0.0032181739807129
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.002769947052002
+
+SHOW COLUMNS FROM `retail_purchase` 
+ Execution Time:0.0044729709625244
+
+SELECT *
+FROM `stores_list` 
+ Execution Time:0.00041699409484863
+
