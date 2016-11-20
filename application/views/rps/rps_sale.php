@@ -1,51 +1,5 @@
-<link href="css/table.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-	input{
-		height: 19px;
-	}
-	td{
-		height: 20px;
-	}
-	
-	tr:nth-child(odd) td {
-	  background:#EBEBEB !important;
-	}
-	 
-	tr:nth-child(odd):hover td {
-	  background:#EBEBEB !important;
-	}
-	tr:hover td {
-	  background:#EBEBEB !important;
-	  color:#666B85 !important;
-	  border-top: none !important;
-  	  border-bottom: none !important;
-	}
-	.table-fill{
-		width: 100% !important;
-		font-family: arial;
-		font-size: 10px !important;
-	}
-	.table-fill tr th, .table-fill tr td{
-		font-size:12px;
-	}
-	.newTab tr:hover td{
 
-		background-color: #4E5066 !important;
-		color: #FFF !important;
-	}
-	.pDiv{
-
-		display: none !important;
-	}
-	#search_clear{
-		display: none !important;
-	}
-	#filtering_form{
-		position: absolute;
-		top: 5%;
-	}
-</style>
-<table border="1" width="100%" class="table-fill">
+<table border="0" width="100%" class="main-table" cellpadding="0" cellspacing="2">
 
 <input type="hidden" name="item_desc" value="" />
 <input type="hidden" name="item_sku" value="" />
@@ -63,17 +17,17 @@
        	  <div style="width:100%; height:500px; overflow-x:scroll;overflow-y:scroll;font-size:10px;" class="transferGrid">
 	
 </div>
-        	<table width="50%" border="0" cellpadding="0" cellspacing="0">
+        	<table width="65%" border="0" cellpadding="0" cellspacing="0">
         	  <tr>
-        	    <td width="137"><label><strong>Total Sale Price</strong>:</label></td>
-        	    <td width="160"><strong style="color:red;" id="totalSale"></strong></td>
+        	    <td width="122" height="25"><label><strong>Total Sale Price</strong>:</label></td>
+        	    <td width="270"><strong style="color:red;" id="totalSale"></strong></td>
       	    </tr>
         	  <tr>
-        	    <td><label><strong>Total MRP</strong>:</label></td>
+        	    <td height="19"><label><strong>Total MRP</strong>:</label></td>
         	    <td><strong style="color:red;" id="totalMrp"></strong></td>
       	    </tr>
         	  <tr>
-        	    <td colspan="2"><strong>Member Name: <span id="blink" style="color:red;"></span></strong></td>
+        	    <td height="25" colspan="2"><strong>Member Name: <span id="blink" style="color:red;"></span></strong></td>
       	    </tr>
         	  <tr>
         	    <td colspan="2"><strong>Total Items: <span style="color:red;" id="totalItm"></span></strong></td>
@@ -83,7 +37,7 @@
 	</tr>
 	<tr>
 		<td><b>Enter Barcode:</b> </td>
-		<td><input type="text" name="sbarcode" class="sbarcodes" value=""  /><img src="<?=base_url()?>assets/img/spin.gif" style="width:7%; vertical-align: center; display:none;" class="spinLoader"></td>
+		<td><input type="text" name="sbarcode" class="sbarcodes" value="" style="width:85% !important"  /><img src="<?=base_url()?>assets/img/spin.gif" style="width:2%; position: absolute; float:left; left:30%; display:none;" class="spinLoader"></td>
 	</tr>
 
 	<tr>
@@ -135,7 +89,7 @@
     </tr>
 
 	<tr>
-		<td height="628" colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<td height="63" colspan="2" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		  <tbody>
 		    <tr>
 		      <td colspan="2" align="right" style="text-align:right;">Non Member Sale:</td>
@@ -157,8 +111,7 @@
 		      <td style="color:red;text-align:center;" id="returnAmount"></td>
 	        </tr>
 	      </tbody>
-		  </table>
-	    <p>&nbsp;</p></td>
+		  </table></td>
 	</tr>
 </table>
 
@@ -183,48 +136,75 @@
 	});
 </script>
 <style type="text/css">
-
+.twitter-typeahead{
+	width:100%;
+}
 
 .typeahead {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 .typeahead:focus {
-	border: 2px solid #0097CF;
+  border: 2px solid #0097CF;
 }
 .tt-query {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
 .tt-hint {
-	color: #999999;
-	width: 145% !important;
-}
-.tt-dropdown-menu {
-	background-color: #FFFFFF;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 4px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	padding: 5px 0;
-	width: 300px;
-}
-.tt-suggestion {
-	font-size: 13px;
-	line-height: 15px;
-	padding: 3px 20px;
-}
-.tt-suggestion.tt-is-under-cursor {
-	background-color: #0097CF;
-	color: #FFFFFF;
-}
-.tt-suggestion p {
-	margin: 0;
+  color: #999999;
+ 	background: transparent !important;
 }
 .sbarcodes{
-	width:145% !important;
-	height: 22px;
-	border: 1px solid #CCC !important;
-	background-color: none !important;
+  border: none !important;
+  border: 1px solid #CCC !important;
+  background-color: #FFF !important;
 }
-.sbarcodes:hover{
-	background-color: none !important;
+.tt-dropdown-menu {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 5px 0;
+  width: 260px;
 }
+.tt-suggestion {
+  font-size: 13px;
+  line-height: 15px;
+  padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+  background-color: #0097CF;
+  color: #FFFFFF;
+}
+.tt-suggestion p {
+  margin: 0;
+}
+input{
+		height: 25px;
+	}
+.main-table{
+
+	font-family: arial;
+	font-size: 13px;
+	margin-top: 1%;
+}
+body{
+
+	background-image: url('images/transfer.jpg');
+}
+
+b, label{
+
+	color: #FFF;;
+}
+
+input[type=submit]{
+
+	border:1px solid #2B7FF5;
+	border-radius: 4px;
+	height: 35px;
+	color: #FFF;
+	cursor: pointer;
+	background-color: #297AEA;
+}
+
 </style>

@@ -2,6 +2,10 @@ $(document).ready(function(){
 
 	var ajaxBootup = ajaxCall('rps/displayRPSItems',{});
 	$('.transferGrid').html(ajaxBootup);
+	var totalData = ajaxCall('rps/getSalePriceAndMrpRPSandTotal',{},'json');
+	$('#totalSale').html(totalData[0]+'/-');
+	$('#totalMrp').html(totalData[1]+'/-');
+	$('#totalItm').html(totalData[2]);
 
 	disableSelection(document.body);
 
@@ -156,7 +160,7 @@ $(document).ready(function(){
 		$('#totalSale').html(totalData[0]+'/-');
 		$('#totalMrp').html(totalData[1]+'/-');
 		$('#totalItm').html(totalData[2]);
-
+		$(".transferGrid").animate({ scrollTop: $(document).height() }, 1000);
 		$('input[name=sbarcode]').focus();
 
 	});

@@ -24,7 +24,7 @@
 		</td>
 		<td width="574" colspan="4" rowspan="14" valign="bottom">
         
-        <div style="width:100%; height:500px; overflow-x:hidden;overflow-y:scroll; vertical-align:top" class="transferGrid">
+        <div style="width:100%; height:500px; overflow-x:none;overflow-y:scroll; vertical-align:top; " class="transferGrid">
 	
 			</div>
         
