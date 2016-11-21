@@ -14,7 +14,7 @@
 			$this->datagrid->setMultiply(array(2,6));
 			$this->auth->checkUserAuthGodown();
 			$this->auth->checkUserLogined();
-			
+			$this->load->helper('download');
 		}
 
 
@@ -76,27 +76,10 @@
 		}
 
 		function transferStock(){
-			/*if($this->session->userdata('products') == ''){
-
-				$this->storemodel->getAllProducts();
-			}*/
-
-			$crud = new grocery_CRUD();
-			$crud->set_theme('flexigrid');
-			$crud->set_table('retail_purchase');
-			$crud->columns('item_bar_code','item_name','item_sale_price');
 			
-			$crud->unset_print();
-			$crud->unset_export();
-			$crud->unset_add();
-			$crud->unset_edit();
-			$crud->unset_read();
-			$crud->unset_delete();
-			$output = $crud->render();
 			$data = array(
 							'content' => 'stores/transfer',
 							'stores'  => $this->storemodel->getAllStores(),
-							'output'  => $output
 						 );
 			$this->load->view('template',$data);
 		}
@@ -164,6 +147,8 @@
 
 			$invoiceNum = $this->storemodel->getLastInvoiceNumAndUpdate($invoiceData[0]);
 
+			$this->session->set_userdata('transferInvoice',$invoiceNum);
+
 			$this->load->view('print/invoice',array('invoiceNum'=>$invoiceNum));
 
 			// $html = $this->load->view('print/invoice',array('invoiceNum'=>$invoiceNum), true);
@@ -179,6 +164,65 @@
 
 			$this->storemodel->SaveStoreTransferData();
 
+		}
+
+		function transferlist(){
+
+
+			$crud = new grocery_CRUD();
+			$crud->set_theme('flexigrid');
+			$crud->set_table('store_transfer');
+			$crud->columns('total_items','total_amount','store_id','invoice_num','file_name','created_date','view_invoice');
+			$crud->display_as('created_date','Transfer Date');
+			$crud->display_as('store_id','Store');
+			$crud->display_as('file_name','Download Excel');
+			$crud->set_relation('store_id','stores_list','store_name');
+			$crud->order_by('created_date','desc');
+			$crud->unset_print();
+			$crud->unset_export();
+			$crud->unset_add();
+			$crud->unset_edit();
+			$crud->unset_read();
+			$crud->unset_delete();
+
+			$crud->callback_column('file_name',array($this,'download_excel_file_function'));
+			$crud->callback_column('view_invoice',array($this,'regenerate_invoice_for_print'));
+
+			$output = $crud->render();
+
+			$data = array(
+							'output' => $output,
+							'content' => 'stores/transfer-list'
+						 );
+
+			$this->load->view('template',$data);
+
+		}
+
+		function download_excel_file_function($filename){
+
+			return '<a href="'.base_url().'index.php/stores/download_excel_file_transfer/'.$filename.'">Download Excel Sheet</a>';
+		}
+
+		function download_excel_file_transfer($filename){
+			
+			force_download(APPPATH . 'logs/StoreEntriesLog/'.$filename, NULL);
+		}
+
+		function regenerate_invoice_for_print($filename,$row){
+
+			return '<a href="'.base_url().'index.php/stores/save_to_session_transfer/'.$filename.'/'.$row->invoice_num.'" target="_blank">View Invoice</a>';
+		}
+
+		function save_to_session_transfer($filename,$invoiceNum){
+
+			$this->storemodel->save_from_file_to_session($filename);
+
+			$this->session->set_userdata('transferInvoice',$invoiceNum);
+
+			$this->load->view('print/invoice',array('invoiceNum'=>$invoiceNum));
+
+			$this->session->set_userdata('StoreTransferItem','');
 		}
 
 		

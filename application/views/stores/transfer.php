@@ -28,13 +28,14 @@
 	
 			</div>
         
-        <table width="525" border="0" align="left" cellpadding="0" cellspacing="0">
-		  <tr>
-		    <td width="115" height="30" style="font-size:12px;"><label><strong>Total Sale Price</strong>:</label></td>
+        <table class="result" width="525" border="0" align="left" cellpadding="0" cellspacing="0" style="padding: 10px;
+background: white;margin-bottom: 0px;">
+			<tr>
+		    <td width="115" height="30" style="font-size:12px;"><label><strong style="color: black">Total Sale Price :</strong></label></td>
 		    <td width="410"><strong style="color:red;" id="totalSale"></strong></td>
 	      </tr>
 		  <tr>
-		    <td height="20" style="font-size:12px;"><label><strong>Total MRP</strong>:</label></td>
+		    <td height="20" style="font-size:12px;"><label><strong style="color: black">Total MRP :</strong></label></td>
 		    <td><strong style="color:red;" id="totalMrp"></strong></td>
 	      </tr>
 		  <tr>
@@ -100,7 +101,8 @@
     </tr>
 
 	<tr>
-	  <td height="130" colspan="2"><input type="submit" name="addToTransferList" value="Add To List" />
+	  <td height="87" colspan="2" style="background-color: white">
+	  	<input type="submit" name="addToTransferList" value="Add To List" style="margin-left: 10px"/>
         <input type="submit" name="cancelTransfer" value="Cancel Transfer" />
         <input type="submit" name="changeStore" value="Change Store" />
       <input type="submit" name="SaveTransfer" value="Save Transfer" /></td>
@@ -179,7 +181,7 @@ body{
 
 b, label{
 
-	color: #FFF;;
+	color: #FFF;
 }
 
 input[type=submit]{

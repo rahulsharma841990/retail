@@ -91,10 +91,31 @@ class StoreModel extends CI_Model{
 
 		$data = $this->session->userdata('StoreTransferItem');
 
+		$totalAmounts = 0;
+		$TransferStoreID = '';
 		foreach($data as $key => $value){
 
 			$this->checkOldEntriesOfItem($value);
+
+			$totalAmounts = $totalAmounts+($value['sale_price']*$value['qty']);
+
+			$TransferStoreID = $value['transferStore'];
 		}
+
+		$totalItems = count($data);
+
+		$invoiceNumber = $this->session->userdata('transferInvoice');
+
+		$InsertTransferQuery = $this->db->insert('store_transfer',array(
+
+																'total_items' => $totalItems,
+																'total_amount' => $totalAmounts,
+																'store_id' => $TransferStoreID,
+																'invoice_num' => $invoiceNumber,
+																'file_name' => 'StoreTransfer-'. date('Y-m-d-H-i-s') . '.csv',
+																'view_invoice' => 'StoreTransfer-'. date('Y-m-d-H-i-s') . '.csv'
+															));
+
 	}
 
 	private function checkOldEntriesOfItem($rawData_Session){
@@ -194,7 +215,7 @@ class StoreModel extends CI_Model{
 
 	private function saveTransferInExcel($rawData_Session){
 
-		$filepath = APPPATH . 'logs/StoreEntriesLog/StoreTransfer-'.$tableName.'-'. date('Y-m-d') . '.csv';
+		$filepath = APPPATH . 'logs/StoreEntriesLog/StoreTransfer-'. date('Y-m-d-H-i-s') . '.csv';
 		 if(!file_exists($filepath)){
 
 		 	$handle = fopen($filepath, "a+"); // Open the file
@@ -392,6 +413,34 @@ class StoreModel extends CI_Model{
 		$orderDate = $this->input->post('order_date');
 		$Query = $this->db->where(array('store_id'=>$store_id, 'order_date'=>$orderDate))->update('rps_orders',array('delv_status'=>1));
 		return true;
+	}
+
+	function save_from_file_to_session($filename){
+
+
+		$dataArray = [];
+		$result = $this->csvreader->parse_file(APPPATH.'logs/StoreEntriesLog/'.$filename);
+		$index = 0;
+		foreach($result as $key => $value){
+
+			$dataArray[$index]['barcode'] = $value['Item Code'];
+			$dataArray[$index]['prodName'] = $value['Item Name'];
+			$dataArray[$index]['qty'] = $value['Item Qty'];
+			$dataArray[$index]['item_desc'] = $value['Item Desc'];
+			$dataArray[$index]['item_expiry'] = $value['Item Expiry'];
+			$dataArray[$index]['mrp'] = $value['MRP'];
+			$dataArray[$index]['sale_price'] = $value['Sale Price'];
+			$dataArray[$index]['transferStore'] = $value['Transfer To'];
+			$dataArray[$index]['free_item_barcode'] = $value['Free Item Barcode'];
+			$dataArray[$index]['free_item_name'] = $value['Free Item Name'];
+			$dataArray[$index]['free_item_qty'] = $value['Free Item Qty'];
+			$dataArray[$index]['item_category'] = $value['Item Category'];
+			$dataArray[$index]['item_unit'] = $value['Item Unit'];
+			$dataArray[$index]['item_sku'] = $value['Item SKU'];
+			$index++;
+		}
+
+		$this->session->set_userdata('StoreTransferItem',$dataArray);
 	}
 
 	

@@ -1,7 +1,7 @@
 ﻿#menu-bar
 {
     font-size: 12px !important;
-    height: 24px;
+    height: 30px;
 }
 ul.main-menu
 {
@@ -9,13 +9,16 @@ ul.main-menu
     margin: 0px 0px 10px 0px;
     padding: 0px;    
 }
+.main-menu > li:hover .main-menu > li > ul{
+    display: block;
+}
 
 ul.main-menu > li
 {
     margin: 0;
     display: inline;
     list-style-type: none;
-    padding: 6px 4px 6px 6px;
+    padding: 21px 10px 8px 8px;
     line-height: 23px;
     vertical-align: middle;
     cursor: default;
@@ -88,7 +91,9 @@ ul.main-menu li ul li
 ul.main-menu li:hover
 {
     background-color: whiteSmoke; /*#fef7cb;*/
+    border-bottom: 4px solid #0e93bc;
 }
+
 ul.main-menu li.active-menu:hover
 {
     background-color: #fff;
@@ -99,7 +104,18 @@ ul.main-menu li ul li.disabled, ul.main-menu li ul li.disabled:hover, ul.main-me
     cursor:default;
     background-color: #fff;
 }
+.table-fill{
+    margin-right: 10px;
+}
 
+.transferGrid::-moz-scrollbar {
+width: 5px;
+}
+
+.transferGrid::-moz-scrollbar-track {
+-moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+border-radius: 10px;
+}
 ul.main-menu li.separator  
 {
     border-top: 1px solid #ddd; 

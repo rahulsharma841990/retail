@@ -108,6 +108,7 @@
                     Transfer
                     <ul>
                         <li><a href="<?=base_url()?>index.php/stores/transferStock" class="submitPop">Stock Transfer</a></li>
+                        <li><a href="<?=base_url()?>index.php/stores/transferlist" class="submitPop">List Transfer's</a></li>
                     </ul>
                 </li>
                 <?php
