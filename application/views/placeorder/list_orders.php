@@ -137,7 +137,7 @@ text-align: center;
       <td colspan="3" align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td colspan="3" align="center"><strong><u>List of Placed Ordersss</u></strong></td>
+      <td colspan="3" align="center"><strong><u>List of Placed Orders</u></strong></td>
     </tr>
     <tr>
       <td width="6%">&nbsp;</td>
