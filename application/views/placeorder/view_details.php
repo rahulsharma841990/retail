@@ -39,6 +39,7 @@ body {
             <th width="9%" align="center" bgcolor="#C5C5C5">Qty</th>
             <th width="9%" align="center" bgcolor="#C5C5C5">MRP</th>
             <th width="15%" align="center" bgcolor="#C5C5C5">Sale Price</th>
+            <th width="15%" align="center" bgcolor="#C5C5C5">Total Amount</th>
             <th width="25%" align="center" bgcolor="#C5C5C5">Delivery Status</th>
           </tr>
           <?php
@@ -53,6 +54,7 @@ body {
             <td align="center"><?=$value->qty?></td>
             <td align="center"><?=$value->mrp?></td>
             <td align="center"><?=$value->sale_price?></td>
+            <td align="center"><?=($value->sale_price*$value->qty)?></td>
             <td align="center"><?=($value->delv_status == 0)?'false':'true'?></td>
           </tr>
           <?php
