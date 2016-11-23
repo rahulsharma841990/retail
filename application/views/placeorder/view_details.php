@@ -60,6 +60,7 @@ body {
           <?php
 		  		$index++;
 		  		endforeach;
+		  		
 		  ?>
         </tbody>
       </table></td>
