@@ -136,7 +136,7 @@
 	.table-fill th,
 	td {
 	  padding: 0 0 0 5px;
-	  vertical-align: middle;
+	  /* vertical-align: middle; */
 	}
 	.table-fill thead {
 	  background: #395870;
