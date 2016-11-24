@@ -38,6 +38,10 @@
 			font-size: 13px;
 			font-weight: normal; 
 		}
+		body{
+
+			background-image: url('images/transfer.jpg');
+		}
 		
 	</style>
 </head>

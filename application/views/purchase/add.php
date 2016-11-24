@@ -1,4 +1,3 @@
-<link href="css/table.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 	*{
 		margin:0 0 0 0;
@@ -7,41 +6,18 @@
 		height: 25px;
 		width:100%;
 	}
-	td{
-		height: 20px;
-	}
-	tr:nth-child(odd) td {
-	  background:#EBEBEB !important;
-	}
-	 
-	tr:nth-child(odd):hover td {
-	  background:#EBEBEB !important;
-	}
-	tr:hover td {
-	  background:#EBEBEB !important;
-	  color:#666B85 !important;
-	  border-top: none !important;
-  	  border-bottom: none !important;
-	}
-	.table-fill{
-		width: 100% !important;
-		font-family: arial;
-		font-size: 10px !important;
-	}
-	.newTab tr:hover td{
+	
 
-		background-color: #4E5066 !important;
-		color: #FFF !important;
-	}
-	/* select{
-    width:100% !important;
-    height:40px !important;
-  } */
-
-  input[type=text], select{
+  input[type=text]{
 
       height: 23px !important;
       width: 95% !important;
+  }
+  
+   select{
+
+      height: 26px !important;
+      width: 97% !important;
   }
 
   textarea{
@@ -51,13 +27,13 @@
 	
 	
 </style>
-<table width="100%" border="1" cellpadding="0" cellspacing="0" class="table-fill">
+<table width="100%" border="0" cellpadding="0" cellspacing="0"  class="main-table">
   <tbody>
     <tr>
       <td colspan="2" align="center" style="text-align:center;"><h3>Enter Bill Details</h3></td>
       <td colspan="2" align="center" style="text-align:center;"><h3>Enter Product Details</h3></td>
-      <td>Select Category: </td>
-      <td>
+      <td width="12%"><strong>Select Category: </strong></td>
+      <td width="25%">
       	<select name="category">
         	<option>Select Category</option>
         	<?php
@@ -71,19 +47,19 @@
       </td>
     </tr>
     <tr>
-      <td width="9%">Enter Bill Number*</td>
-      <td width="18%">
+      <td width="9%" height="38"><strong>Enter Bill Number*</strong></td>
+      <td width="20%">
         <input name="billnum" type="text" tabindex="1" value="" id="billnum" />
       </td>
-      <td>Item Code</td>
+      <td><strong>Item Code</strong></td>
       <td>
-        <input name="barCode" class="ShowHide itembarcode" type="text" tabindex="5" value="" id="barCode" style="width:192% !important" />
+        <input name="barCode" class="ShowHide itembarcode" type="text" tabindex="5" value="" id="barCode" style="width:100% !important" />
       </td>
-      <td>Enter Sale Price:</td>
+      <td><strong>Enter Sale Price:</strong></td>
       <td><input name="salePrice" type="text" class="ShowHide" tabindex="12" value="" id="salePrice" /></td>
     </tr>
     <tr>
-      <td>Select Vandor:*</td>
+      <td height="38"><strong>Select Vandor:*</strong></td>
       <td>
         <select name="vendor"  style="height:30px;" tabindex="2" id="vendor">
           <option>Select Vendor</option>
@@ -98,51 +74,49 @@
 						?>
         </select>
       </td>
-      <td>Enter Product Name:</td>
+      <td><strong>Enter Product Name:</strong></td>
       <td>
         <input name="prodName" class="ShowHide" type="text" tabindex="6" value="" id="prodName" />
       </td>
-      <td>Enter Purchase Price:</td>
+      <td><strong>Enter Purchase Price:</strong></td>
       <td><input name="purchasePrice" class="ShowHide" type="text" tabindex="13" value="" id="purchasePrice" /></td>
     </tr>
     <tr>
-      <td>Bill Date:*</td>
+      <td height="34"><strong>Bill Date:*</strong></td>
       <td>
         <input name="billDate" type="text" id="datepicker" tabindex="3" value="" />
       </td>
-      <td>Enter Product Desc:</td>
+      <td><strong>Enter Product Desc:</strong></td>
       <td>
-        <textarea name="prodDesc" class="ShowHide" style="overflow:auto;resize:none; height:60px;width:100%;" tabindex="7" id="prodDesc"></textarea>
+        <input name="prodDesc" class="ShowHide" type="text" tabindex="6" value="" id="prodDesc" />
       </td>
-      <td>Enter Qty:</td>
+      <td><strong>Enter Qty:</strong></td>
       <td><input name="qty" type="text" class="ShowHide" tabindex="14" value="" id="qty" /></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td width="12%">Enter MRP:</td>
-      <td width="23%">
+      <td height="38">&nbsp;</td>
+      <td><input name="startAddItem" type="submit" tabindex="4" value="Enter Items" /></td>
+      <td width="10%"><strong>Enter MRP:</strong></td>
+      <td width="24%">
         <input name="mrp" class="ShowHide" type="text" tabindex="8" value="" id="mrp" />
       </td>
-      <td>Free Item Barcode:</td>
+      <td><strong>Free Item Barcode:</strong></td>
       <td><input name="FreeItemCode" class="ShowHide" type="text" tabindex="15" value="" id="FreeItemCode" /></td>
     </tr>
     <tr>
+      <td height="36">&nbsp;</td>
       <td>&nbsp;</td>
-      <td>
-        <input name="startAddItem" type="submit" tabindex="4" value="Enter Items" />
-      </td>
-      <td>Item SKU:</td>
+      <td><strong>Item SKU:</strong></td>
       <td>
         <input name="sku" class="ShowHide" type="text" tabindex="9" value="" id="sku" />
       </td>
-      <td>Free Item Name:</td>
+      <td><strong>Free Item Name:</strong></td>
       <td><input name="FreeItemName" class="ShowHide" type="text" tabindex="16" value="" id="FreeItemName" /></td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
-      <td><strong>Total Bill Amount:</strong> <span style="color:red;"><strong id="totalPricePurchase"></strong></span></td>
-      <td>Product Unit</td>
+      <td height="29">&nbsp;</td>
+      <td><strong>Total Bill Amount:</strong><strong id="totalPricePurchase" style="color:red;"></strong></td>
+      <td><strong>Product Unit</strong></td>
       <td>
         <select name="unit" class="ShowHide" style="width:45%;" tabindex="10" id="unit">
           <option>Select Unit</option>
@@ -152,22 +126,22 @@
           <option value="gm">PCS</option>
         </select>
       </td>
-      <td>Free Item Qty</td>
+      <td><strong>Free Item Qty</strong></td>
       <td><input name="FreeQty" class="ShowHide" type="text" tabindex="17" value="" id="FreeQty" /></td>
     </tr>
     <tr>
-      <td colspan="2" align="center">
+      <td height="30" colspan="2" align="center">
       	
                 <img src="img/spin.gif" style="width:10%; vertical-align:center; display:none;" id="saveSpinner" />
                 <input type="submit" name="savePurchaseList" value="Save Bill" style="width:40%;" />
                 <input type="submit" name="deletBill" value="Delete Bill" style="width:40%;" />
             
       </td>
-      <td>Enter Expiry:</td>
+      <td><strong>Enter Expiry:</strong></td>
       <td>
         <input name="expiryDate" class="ShowHide" type="text" id="datepickerExp" tabindex="11" value="" />
       </td>
-      <td>Free Item MRP:</td>
+      <td><strong>Free Item MRP:</strong></td>
       <td><input name="freeMrp" class="ShowHide" type="text" tabindex="18" value="" id="freeMrp" /></td>
     </tr>
     <tr>
@@ -175,10 +149,10 @@
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td colspan="2">
+      <td colspan="2" align="right">
       		<input name="addToList" type="submit" style="width:20%;" tabindex="19" value="Add To List" />
 			<input name="resetData" type="submit" style="width:20%;" tabindex="20" value="Reset Data"/>
-      </td>
+&nbsp;      </td>
     </tr>
   </tbody>
 </table>
@@ -205,20 +179,9 @@
 	    });
 </script>
 
-<table width="100%" border="1" cellpadding="0" cellspacing="0">
-  <tbody>
-    <tr>
-      <td width="67%">
-      
-      		
-		<div style="width:100%; float:left; height:250px !important; overflow-x: scroll; overflow-y: scroll !important;" id="tableData">
+<div style="width:100%; float:left; height:300px !important; overflow-x: scroll; overflow-y: scroll !important;" id="tableData">
 			
 		</div>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 
 <style type="text/css">
@@ -245,7 +208,9 @@
   });
 </script>
 <style type="text/css">
-
+.twitter-typeahead{
+	width:95.5%;
+}
 
 .typeahead {
   background-color: #FFFFFF;
@@ -258,11 +223,12 @@
 }
 .tt-hint {
   color: #999999;
-  background: transparent !important;
+ 	background: transparent !important;
 }
 .itembarcode{
   border: none !important;
   border: 1px solid #CCC !important;
+  background-color: #FFF !important;
 }
 .tt-dropdown-menu {
   background-color: #FFFFFF;
@@ -270,7 +236,7 @@
   border-radius: 4px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   padding: 5px 0;
-  width: 300px;
+  width: 260px;
 }
 .tt-suggestion {
   font-size: 13px;
@@ -283,6 +249,26 @@
 }
 .tt-suggestion p {
   margin: 0;
+}
+.main-table{
+
+	font-family: arial;
+	font-size: 13px;
+	margin-top: 1%;
+}
+b, label, strong{
+
+	color: #FFF;
+}
+
+input[type=submit]{
+
+	border:1px solid #2B7FF5;
+	border-radius: 4px;
+	height: 35px;
+	color: #FFF;
+	cursor: pointer;
+	background-color: #297AEA;
 }
 
 </style>
