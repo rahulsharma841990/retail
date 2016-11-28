@@ -1,7 +1,7 @@
 <div id="menu-bar" style="margin-top:0%; background-color:#A0CAFB;">
             <ul class="main-menu">
                 <li>
-                    File
+                    Profile
                     <ul>
 
                         <li>
@@ -21,7 +21,7 @@
                         <li>Export</li>
                         <li><a href="<?=base_url()?>index.php/dashboard">Go To Dashboard</a></li>
                         <li class="separator"></li>
-                        <li class="icon print"><a href="javascript:void(0)">Print<span>Ctrl+P</span></a></li>
+                        <li class="icon print"><a href="<?=base_url()?>index.php/profile">Edit Profile</a></li>
                         <li class="separator"></li>
                         <li><a href="<?=url()?>index.php/login/logout">Logout</a></li>
                     </ul>

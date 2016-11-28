@@ -2032,7 +2032,9 @@ class CI_Email {
 		{
 			$this->_send_command('hello');
 			$this->_send_command('starttls');
-
+			stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_host', FALSE);
+			stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_peer_name', FALSE);
+			stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_peer', FALSE);
 			$crypto = stream_socket_enable_crypto($this->_smtp_connect, TRUE, STREAM_CRYPTO_METHOD_TLS_CLIENT);
 
 			if ($crypto !== TRUE)
